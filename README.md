@@ -1,3 +1,5 @@
+이 문서는 공부용으로 https://github.com/lukehoban/es6features 를 번역한 https://itstory.tk/entry/JavaScript-ES6-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC 글에 대한 내용입니다.
+
 # ECMAScript 6 <sup>[git.io/es6features](http://git.io/es6features)</sup>
 
 ## Introduction
