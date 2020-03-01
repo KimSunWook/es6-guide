@@ -1,13 +1,17 @@
-이 문서는 공부용으로 https://github.com/lukehoban/es6features 를 번역한 https://itstory.tk/entry/JavaScript-ES6-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC 글에 대한 내용입니다.
+*이 문서는 https://github.com/lukehoban/es6features 를 번역한 글 https://itstory.tk/entry/JavaScript-ES6-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC을 정리한 내용입니다.*
 
-# ECMAScript 6 <sup>[git.io/es6features](http://git.io/es6features)</sup>
+
+
+# ECMAScript 6 가이드
+
 
 ## Introduction
-ECMAScript 6, also known as ECMAScript 2015, is the latest version of the ECMAScript standard.  ES6 is a significant update to the language, and the first update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is [underway now](http://kangax.github.io/es5-compat-table/es6/).
 
-See the [ES6 standard](http://www.ecma-international.org/ecma-262/6.0/) for full specification of the ECMAScript 6 language.
+ECMAScript 2015로도 알려져 있는 ECMAScript 6는 ECMAScript 표준의 가장 최신 버전입니다. ES6는 새로운 언어 기능이 포함된 주요 업데이트이며, 2009년도에 표준화된 ES5 이후로 언어 기능에 대한 첫 업데이트이기도 합니다. 현재 주요 JavaScript 엔진들에서 ES6 기능들을 [구현 중](http://kangax.github.io/es5-compat-table/es6/)에 있습니다.
 
-ES6 includes the following new features:
+ECMAScript 6 언어의 전체 스펙을 확인하시려면 [ES6 Standard](http://www.ecma-international.org/ecma-262/6.0/)를 확인하세요.
+
+ES6는 아래의 새로운 기능들을 포함하고 있습니다:
 - [arrows](#arrows)
 - [classes](#classes)
 - [enhanced object literals](#enhanced-object-literals)
@@ -33,7 +37,7 @@ ES6 includes the following new features:
 ## ECMAScript 6 Features
 
 ### Arrows
-Arrows are a function shorthand using the `=>` syntax.  They are syntactically similar to the related feature in C#, Java 8 and CoffeeScript.  They support both statement block bodies as well as expression bodies which return the value of the expression.  Unlike functions, arrows share the same lexical `this` as their surrounding code.
+Arrows(화살표) 함수는 => 문법을 사용하는 축약형 함수입니다. C#, Java 8, CoffeeScript의 해당 기능과 문법적으로 유사합니다. Arrows는 표현식의 결과 값을 반환하는 표현식 본문(expression bodies)뿐만 아니라 상태 블럭 본문(statement block bodies)도 지원합니다. 하지만 일반 함수의 자신을 호출하는 객체를 가리키는 `dynamic this`와 달리 arrows 함수는 코드의 상위 스코프(lexical scope)를 가리키는 `lexical this`를 가집니다.
 
 ```JavaScript
 // Expression bodies
