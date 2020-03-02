@@ -62,10 +62,13 @@ var bob = {
 }
 ```
 
-More info: [MDN Arrow Functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+화살표 함수의 더 자세한 설명은 [MDN Arrow Functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)를 참고하세요.
+printFriends() 함수의 선언 표기법이 궁금하시면 [MDN Object Initializer](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer)를 참고하세요.
+
+
 
 ### Classes
-ES6 classes are a simple sugar over the prototype-based OO pattern.  Having a single convenient declarative form makes class patterns easier to use, and encourages interoperability.  Classes support prototype-based inheritance, super calls, instance and static methods and constructors.
+ES6 클래스는 프로토타입 기반 객체지향 패턴을 더 쉽게 사용할 수 있는 대체재입니다. 클래스 패턴 생성을 더 쉽고 단순하게 생성할 수 있어서 사용하기도 편하고 상호운용성도 증가됩니다.
 
 ```JavaScript
 class SkinnedMesh extends THREE.Mesh {
@@ -93,7 +96,9 @@ class SkinnedMesh extends THREE.Mesh {
 }
 ```
 
-More info: [MDN Classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
+더 자세한 설명은 [MDN Classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)를 참고하세요.
+
+
 
 ### Enhanced Object Literals
 Object literals are extended to support setting the prototype at construction, shorthand for `foo: foo` assignments, defining methods, making super calls, and computing property names with expressions.  Together, these also bring object literals and class declarations closer together, and let object-based design benefit from some of the same conveniences.
@@ -116,8 +121,10 @@ var obj = {
 
 More info: [MDN Grammar and types: Object literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Object_literals)
 
+
+
 ### Template Strings
-Template strings provide syntactic sugar for constructing strings.  This is similar to string interpolation features in Perl, Python and more.  Optionally, a tag can be added to allow the string construction to be customized, avoiding injection attacks or constructing higher level data structures from string contents.
+Template Strings(ES6 부터는 Template literals라 부름)는 문법적으로 더 편하게 string을 생성할 수 있게 합니다. 이는 Perl, Python 등의 문자열 보간(string interpolation)과 유사합니다. Tagged template literals는 인젝션 공격 방어 혹은 문자열로 부터 상위 데이터 구조체 재조립 등을 위해 string 생성을 커스터마이징이 가능하게끔 해줍니다.
 
 ```JavaScript
 // Basic literal string creation
@@ -139,10 +146,12 @@ POST`http://foo.org/bar?a=${a}&b=${b}
        "bar": ${bar}}`(myOnReadyStateChangeHandler);
 ```
 
-More info: [MDN Template Strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings)
+더 자세한 설명은 [MDN Template Strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings)를 참고하세요.
+
+
 
 ### Destructuring
-Destructuring allows binding using pattern matching, with support for matching arrays and objects.  Destructuring is fail-soft, similar to standard object lookup `foo["bar"]`, producing `undefined` values when not found.
+Destructuring는 배열과 객체에 패턴 매칭을 통한 데이터 바인딩을 제공합니다. Destructuring는 할당 실패에 유연하며, 실패 시 `undefined` 값이 자동할당 됩니다. 또한 `foo["bar"]`와 같이 객체의 속성 값도 자동으로 검색하여 바인딩해줍니다.
 
 ```JavaScript
 // list matching
@@ -173,7 +182,10 @@ a === 1;
 
 More info: [MDN Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
+
+
 ### Default + Rest + Spread
+파라미터에 기본 값을 설정할 수 있습니다.
 Callee-evaluated default parameter values.  Turn an array into consecutive arguments in a function call.  Bind trailing parameters to an array.  Rest replaces the need for `arguments` and addresses common cases more directly.
 
 ```JavaScript
@@ -183,6 +195,8 @@ function f(x, y=12) {
 }
 f(3) == 15
 ```
+
+가변인자를 사용가능하며, 배열로 치환시켜 줍니다. Rest parameters는 `arguments` 보다 직관성을 제공합니다.
 ```JavaScript
 function f(x, ...y) {
   // y is an Array
@@ -190,6 +204,8 @@ function f(x, ...y) {
 }
 f(3, "hello", true) == 6
 ```
+
+함수 호출 시 배열을 일련의 인자에 나누어 주입시켜 줍니다.
 ```JavaScript
 function f(x, y, z) {
   return x + y + z;
@@ -198,11 +214,13 @@ function f(x, y, z) {
 f(...[1,2,3]) == 6
 ```
 
-More MDN info: [Default parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters), [Rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters), [Spread Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)
+더 자세한 설명은 [Default parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters), [Rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters), [Spread Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)를 참고하세요.
+
+
 
 ### Let + Const
-Block-scoped binding constructs.  `let` is the new `var`.  `const` is single-assignment.  Static restrictions prevent use before assignment.
-
+                                                                                        
+블록 유효 범위를 갖는 새로운 변수 선언 방법을 지원합니다. `let`은 `var`와 유사하게 동작합니다. `const`는 재할당 및 재선언이 불가능합니다. `var`의 유효 범위는 전체 외부 함수까지이지만 `let`은 변수를 선언한 블록과 그 내부 블록들에서 유효합니다.
 
 ```JavaScript
 function f() {
@@ -220,10 +238,13 @@ function f() {
 }
 ```
 
-More MDN info: [let statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), [const statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
+더 자세한 설명은 [let statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), [const statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)를 참고하세요.
+
+
 
 ### Iterators + For..Of
-Iterator objects enable custom iteration like CLR IEnumerable or Java Iterable.  Generalize `for..in` to custom iterator-based iteration with `for..of`.  Don’t require realizing an array, enabling lazy design patterns like LINQ.
+
+Iterator 객체는 CLR의 IEnumerable 혹은 Java의 Iterable처럼 사용자 정의의 반복을 가능하게 해줍니다. `for..of` 반복문이 ES6에서 추가 되었으며 `for..in` 반복문과 달리 iterator 기반의 컬렉션 전용 반복문입니다. for in 반복문과의 차이점은 [for in vs for of](https://itstory.tk/entry/Javascript-for-in-vs-for-of-%EB%B0%98%EB%B3%B5%EB%AC%B8)를 참고하세요.
 
 ```JavaScript
 let fibonacci = {
@@ -246,7 +267,8 @@ for (var n of fibonacci) {
 }
 ```
 
-Iteration is based on these duck-typed interfaces (using [TypeScript](http://typescriptlang.org) type syntax for exposition only):
+Iteration은 아래의 duck-type 인터페이스를 기반으로 합니다. (설명을 위해 [TypeScript](http://typescriptlang.org)의 타입 문법을 사용하였습니다)
+
 ```TypeScript
 interface IteratorResult {
   done: boolean;
@@ -260,12 +282,15 @@ interface Iterable {
 }
 ```
 
-More info: [MDN for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
+더 자세한 설명은 [MDN for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)를 참고하세요.
+
+
 
 ### Generators
-Generators simplify iterator-authoring using `function*` and `yield`.  A function declared as function* returns a Generator instance.  Generators are subtypes of iterators which include additional  `next` and `throw`.  These enable values to flow back into the generator, so `yield` is an expression form which returns a value (or throws).
 
-Note: Can also be used to enable ‘await’-like async programming, see also ES7 `await` proposal.
+Generators는 `function*`와 `yield` 키워드를 이용하여 iterator 선언을 단순하게 작성할 수 있게 도와줍니다. `function*`로 선언한 함수는 Generator 객체를 반환합니다. Generators는 iterator의 하위 타입이며 `next`와 `throw` 메서드를 가지고 있습니다. 이 메서드들로 인해 `yield` 키워드로 반환된 값은 다시 generator에 주입거나 예외처리를 할 수 있게 되었습니다.
+
+참고: 해당 키워드는 비동기 프로그래밍의 `await` 같은 기능이 가능하게끔 기반이 되었습니다. ES7의 await 제안서를 참고하세요.
 
 ```JavaScript
 var fibonacci = {
@@ -288,7 +313,7 @@ for (var n of fibonacci) {
 }
 ```
 
-The generator interface is (using [TypeScript](http://typescriptlang.org) type syntax for exposition only):
+generator 인터페이스는 다음과 같습니다. (설명을 위해 [TypeScript](http://typescriptlang.org)의 타입 문법을 사용하였습니다)
 
 ```TypeScript
 interface Generator extends Iterator {
@@ -297,10 +322,13 @@ interface Generator extends Iterator {
 }
 ```
 
-More info: [MDN Iteration protocols](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
+더 자세한 설명은 [MDN Iteration protocols](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)를 참고하세요.
+
+
 
 ### Unicode
-Non-breaking additions to support full Unicode, including new Unicode literal form in strings and new RegExp `u` mode to handle code points, as well as new APIs to process strings at the 21bit code points level.  These additions support building global apps in JavaScript.
+
+완전한 유니코드를 지원하기 위해 문자열에 새로운 유니코드 리터럴과 정규표현식에 u 모드가 추가되었습니다. 또한 21비트 형식까지 처리하기 위한 신규 API가 추가되었습니다. 이 추가된 기능은 JavaScript로 글로벌 앱을 만들 수 있도록 지원합니다.
 
 ```JavaScript
 // same as ES5.1
@@ -321,10 +349,13 @@ for(var c of "𠮷") {
 }
 ```
 
-More info: [MDN RegExp.prototype.unicode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicode)
+더 자세한 설명은 [MDN RegExp.prototype.unicode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicode)를 참고하세요.
+
+
 
 ### Modules
-Language-level support for modules for component definition.  Codifies patterns from popular JavaScript module loaders (AMD, CommonJS). Runtime behaviour defined by a host-defined default loader.  Implicitly async model – no code executes until requested modules are available and processed.
+
+언어 차원에서 컴포넌트 정의를 위한 모듈을 지원합니다. 유명한 JavaScript 모듈 로더들(AMD, CommonJS)의 패턴을 적용시켰습니다. 런타임 동작은 호스트에 정의된 기본 로더에 의해 정의됩니다. 묵시적 비동기 형태로 요구되는 모듈들이 정상적으로 로드되기 전까지 코드가 실행되지 않습니다.
 
 ```JavaScript
 // lib/math.js
@@ -344,7 +375,7 @@ import {sum, pi} from "lib/math";
 alert("2π = " + sum(pi, pi));
 ```
 
-Some additional features include `export default` and `export *`:
+`export default`와 `export *` 문법도 제공합니다.
 
 ```JavaScript
 // lib/mathplusplus.js
@@ -360,17 +391,21 @@ import ln, {pi, e} from "lib/mathplusplus";
 alert("2π = " + ln(e)*pi*2);
 ```
 
-More MDN info: [import statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import), [export statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
+더 자세한 내용은 [import statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import), [export statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)를 참고하세요.
+
+
 
 ### Module Loaders
-Module loaders support:
-- Dynamic loading
-- State isolation
-- Global namespace isolation
-- Compilation hooks
-- Nested virtualization
 
-The default module loader can be configured, and new loaders can be constructed to evaluate and load code in isolated or constrained contexts.
+Module Loaders는 다음을 지원합니다.
+
+- 동적 로딍(Dynamic loading)
+- 상태 격리(State isolation)
+- 전역 네임스페이스 격리(Global namespace isolation)
+- 컴파일 훅(Compilation hooks)
+- 중첩 가상화(Nested virtualization)
+
+기본으로 사용할 모듈 로더를 설정할 수 있으며, 로더를 새로 생성하여 격리되거나 제한된 맥락에서 코드를 로드할 수 있습니다.
 
 ```JavaScript
 // Dynamic loading – ‘System’ is default loader
@@ -389,8 +424,11 @@ System.get('jquery');
 System.set('jquery', Module({$: $})); // WARNING: not yet finalized
 ```
 
+
+
 ### Map + Set + WeakMap + WeakSet
-Efficient data structures for common algorithms.  WeakMaps provides leak-free object-key’d side tables.
+
+일반 알고리즘을 위한 효율적인 데이터 구조를 제공합니다. WeakMap과 WeakSet는 메모리 누수로 부터 자유롭게 해줍니다. 이들 내 저장된 객체에 다른 참조가 없는 경우, garbage collection 될 수 있습니다.
 
 ```JavaScript
 // Sets
@@ -408,18 +446,21 @@ m.get(s) == 34;
 // Weak Maps
 var wm = new WeakMap();
 wm.set(s, { extra: 42 });
-wm.size === undefined
+wm.size === undefined // undefined (사용된 곳이 없기 때문)
 
 // Weak Sets
 var ws = new WeakSet();
 ws.add({ data: 42 });
-// Because the added object has no other references, it will not be held in the set
+wm.size === undefined // undefined (사용된 곳이 없기 때문)
 ```
 
-More MDN info: [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set), [WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap), [WeakSet](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)
+더 자세한 내용은 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set), [WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap), [WeakSet](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)를 참고하세요.
+
+
 
 ### Proxies
-Proxies enable creation of objects with the full range of behaviors available to host objects.  Can be used for interception, object virtualization, logging/profiling, etc.
+
+프록시(Proxy)를 사용하면 호스트 객체에 다양한 기능을 추가하여 객체를 생성할 수 있습니다. interception, 객체 추상화, 로깅/수집, 값 검증 등에 사용될 수 있습니다.
 
 ```JavaScript
 // Proxying a normal object
@@ -447,7 +488,7 @@ var p = new Proxy(target, handler);
 p() === 'I am the proxy';
 ```
 
-There are traps available for all of the runtime-level meta-operations:
+proxy의 `handler`가 가질 수 있는 트랩(trap)들입니다.
 
 ```JavaScript
 var handler =
@@ -469,11 +510,13 @@ var handler =
 }
 ```
 
-More info: [MDN Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+더 자세한 내용은 [MDN Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)를 참고하세요.
+
+
 
 ### Symbols
-Symbols enable access control for object state.  Symbols allow properties to be keyed by either `string` (as in ES5) or `symbol`.  Symbols are a new primitive type. Optional `description` parameter used in debugging - but is not part of identity.  Symbols are unique (like gensym), but not private since they are exposed via reflection features like `Object.getOwnPropertySymbols`.
 
+심볼(Symbol)은 객체 상태의 접근 제어를 가능하게 합니다. Symbol은 새로운 원시 타입으로 이름 충돌의 위험 없이 속성(property)의 키(key)로 사용할 수 있습니다. 옵션 파라미터인 `description`는 디버깅 용도로 사용되며 식별 용도는 아닙니다. Symbol은 고유(unique)하며, `Object.getOwnPropertySymbols`와 같은 reflection 기능들로 접근할 수 있기 때문에 private 하진 않습니다(`for in`나 `Object.keys()`로는 접근 불가).
 
 ```JavaScript
 var MyClass = (function() {
@@ -498,16 +541,17 @@ var c = new MyClass("hello")
 c["key"] === undefined
 ```
 
-More info: [MDN Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+더 자세한 내용은 [ES6 In Depth: 심볼 (Symbol)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)를 참고하세요.
+
+
 
 ### Subclassable Built-ins
-In ES6, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
 
-Object construction for a function named `Ctor` now uses two-phases (both virtually dispatched):
-- Call `Ctor[@@create]` to allocate the object, installing any special behavior
-- Invoke constructor on new instance to initialize
+ES6에서 `Array`, `Date`, DOM `Element` 같이 내장 객체들은 상속이 가능합니다. 객체 생성 시 호출되는 `Ctor` 함수는 다음의 2단계를 가집니다.(둘다 가상적으로 실행)
 
-The known `@@create` symbol is available via `Symbol.create`.  Built-ins now expose their `@@create` explicitly.
+객체 할당을 위해 `Ctor[@@create]` 호출하여
+- 새로운 인스턴스의 생성자를 호출해 초기화 진행
+- 아시다싶이 `@@create` 심볼은 `Symbol.create`를 통해 만들어졌습니다.
 
 ```JavaScript
 // Pseudo-code of Array
@@ -532,8 +576,11 @@ arr[1] = 12;
 arr.length == 2
 ```
 
+
+
 ### Math + Number + String + Array + Object APIs
-Many new library additions, including core Math libraries, Array conversion helpers, String helpers, and Object.assign for copying.
+
+core Math 라이브러리, Array 생성 helper, String helper, 복사를 위한 Object.assign 등 많은 라이브러리들이 추가되었습니다.
 
 ```JavaScript
 Number.EPSILON
@@ -562,16 +609,22 @@ Object.assign(Point, { origin: new Point(0,0) })
 
 More MDN info: [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math), [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from), [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of), [Array.prototype.copyWithin](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin), [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
+
+
 ### Binary and Octal Literals
-Two new numeric literal forms are added for binary (`b`) and octal (`o`).
+
+2진법 (b), 8진법 (o) numeric 리터럴 형식이 추가되었습니다.
 
 ```JavaScript
 0b111110111 === 503 // true
 0o767 === 503 // true
 ```
 
+
+
 ### Promises
-Promises are a library for asynchronous programming.  Promises are a first class representation of a value that may be made available in the future.  Promises are used in many existing JavaScript libraries.
+
+Promise는 비동기 프로그래밍을 위한 라이브러리입니다. Promise는 미래에 생성되는 값을 나타내는 일급 객체입니다. Promise는 현존하는 많은 JavaScript 라이브러리에 사용되고 있습니다.
 
 ```JavaScript
 function timeout(duration = 0) {
@@ -589,19 +642,25 @@ var p = timeout(1000).then(() => {
 })
 ```
 
-More info: [MDN Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+더 자세한 내용은 [MDN Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)를 참고하세요.
+
+
 
 ### Reflect API
-Full reflection API exposing the runtime-level meta-operations on objects.  This is effectively the inverse of the Proxy API, and allows making calls corresponding to the same meta-operations as the proxy traps.  Especially useful for implementing proxies.
+
+Reflection API는 런타임 시 객체에 대해 작업을 수행할 수 있습니다. 프록시 트랩(proxy traps)와 같은 메타 함수들을 가지고 있습니다. Reflection은 프록시를 구현하는데 유용합니다.
 
 ```JavaScript
 // No sample yet
 ```
 
-More info: [MDN Reflect](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
+더 자세한 내용은 [MDN Reflect](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect)를 참고하세요.
+
+
 
 ### Tail Calls
-Calls in tail-position are guaranteed to not grow the stack unboundedly.  Makes recursive algorithms safe in the face of unbounded inputs.
+
+마지막에 호출되는 함수가 호출 스택이 초과되게 하지 않습니다. 재귀 알고리즘을 매우 큰 입력 값에서도 안전하게 만듭니다.
 
 ```JavaScript
 function factorial(n, acc = 1) {
